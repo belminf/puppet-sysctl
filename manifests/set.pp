@@ -10,7 +10,7 @@ define sysctl::set($value, $key = $name) {
         changes => "rm ${key}",
         onlyif  => "match ${key} size > 1",
         notify  => Exec['sysctl_refresh'],
-        before  => Augeas["sysctl-${key}-set"],
+        before  => Augeas["sysctl/${key}/set"],
     }
 
     # Set the key
